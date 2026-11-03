@@ -1,0 +1,278 @@
+/* ---------- Переменные: светлая тема ---------- */
+:root {
+    --bg: #f6f5f8;
+    --surface: #ffffff;
+    --text: #4a4553;
+    --text-h: #16131c;
+    --border: #e2e0e6;
+
+    --accent: #6d3bf5;
+    --accent-hover: #5a2ad9;
+    --accent-text: #ffffff;
+
+    --correct: #1f8a4c;
+    --correct-bg: #e3f6eb;
+    --wrong: #c8323b;
+    --wrong-bg: #fbe5e6;
+
+    --radius: 12px;
+    --shadow: 0 4px 14px rgba(20, 10, 40, 0.08);
+
+    font: 18px/1.45 system-ui, "Segoe UI", Roboto, sans-serif;
+    color-scheme: light dark;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Переменные: тёмная тема (по настройкам системы) ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #121118;
+        --surface: #1c1b24;
+        --text: #b4b0be;
+        --text-h: #f3f2f7;
+        --border: #2e2c38;
+
+        --accent: #9f7bff;
+        --accent-hover: #b497ff;
+        --accent-text: #121118;
+
+        --correct: #4ccb7f;
+        --correct-bg: #15301f;
+        --wrong: #ff6b73;
+        --wrong-bg: #3a1a1d;
+
+        --shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* ---------- База ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+}
+
+#root {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 16px;
+    min-height: 100svh;
+}
+
+h1 {
+    margin: 24px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-h);
+    text-align: center;
+}
+
+p {
+    margin: 0;
+}
+
+/* ---------- Навигация ---------- */
+nav {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Форма на главной ---------- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-h);
+}
+
+select {
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--text-h);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+/* ---------- Кнопки ---------- */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    font: inherit;
+    text-align: left;
+    color: var(--text-h);
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition:
+        border-color 0.15s,
+        background-color 0.15s;
+}
+
+/* Видимая рамка при навигации с клавиатуры */
+.btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.btn:disabled {
+    cursor: default;
+}
+
+/* Обычная кнопка (вариант ответа) */
+.btn-secondary:hover:not(:disabled) {
+    border-color: var(--accent);
+}
+
+.btn-secondary:disabled {
+    opacity: 0.6;
+}
+
+/* Главная кнопка («Старт», «Дальше») */
+.btn-primary {
+    text-align: center;
+    font-weight: 600;
+    color: var(--accent-text);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.btn-primary:disabled {
+    opacity: 0.4;
+}
+
+/* Правильный ответ */
+.btn-correct {
+    color: var(--correct);
+    background: var(--correct-bg);
+    border-color: var(--correct);
+}
+
+/* Выбранный неправильный ответ */
+.btn-wrong {
+    color: var(--wrong);
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+}
+
+/* ---------- Экран вопроса ---------- */
+.quiz-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.question-panel {
+    padding: 20px;
+    margin-bottom: 8px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.question {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-h);
+}
+
+.answer-line {
+    width: 100%;
+}
+
+/* Кнопка «Дальше» отделена от вариантов ответа */
+.quiz-panel > .btn-primary {
+    margin-top: 12px;
+}
+
+/* ---------- Счёт и таймер ---------- */
+
+/* Необязательная обёртка: ставит счёт и таймер в одну строку */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.score,
+.timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    padding: 6px 14px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums; /* цифры одной ширины, текст не дёргается */
+    color: var(--text-h);
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 999px;
+}
+
+.score {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Мало времени: добавь этот класс, когда осталось 5 секунд или меньше */
+.timer-low {
+    color: var(--wrong);
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+}
+
+/* ---------- Ошибка ---------- */
+.error-panel {
+    margin-top: 24px;
+    padding: 16px 20px;
+    color: var(--wrong);
+    background: var(--wrong-bg);
+    border: 2px solid var(--wrong);
+    border-radius: var(--radius);
+}
+
+/* ---------- Маленькие экраны ---------- */
+@media (max-width: 480px) {
+    :root {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}
