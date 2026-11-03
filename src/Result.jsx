@@ -18,8 +18,8 @@ function Result() {
 
     return (
         <section className="result">
-            <p>Your score final is {score}</p>
-            <p>Would you like save it to leaderboard?</p>
+            <p className="final-score">Your final score is {score}</p>
+            <p className="subtitle">Would you like to save it to the leaderboard?</p>
 
             <Button variant="primary" onClick={() => save()}>
                 Save

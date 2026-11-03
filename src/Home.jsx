@@ -22,10 +22,10 @@ function Home({ setSettings }) {
     }
 
     return (
-        <>
+        <section className="home">
             <h1>Choose settings</h1>
             <div className="form-group">
-                <label htmlFor="cat-choose"></label>
+                <label htmlFor="cat-choose">Category</label>
                 <select
                     id="cat-choose"
                     onChange={(e) => setSettings((prev) => ({ ...prev, category: e.target.value }))}
@@ -39,7 +39,7 @@ function Home({ setSettings }) {
                 </select>
             </div>
             <div className="form-group">
-                <label htmlFor="diff-choose"></label>
+                <label htmlFor="diff-choose">Difficulty</label>
                 <select
                     id="diff-choose"
                     onChange={(e) =>
@@ -56,7 +56,7 @@ function Home({ setSettings }) {
             <Button variant="primary" onClick={() => navigate("/quiz")} disabled={!canContinue}>
                 Start
             </Button>
-        </>
+        </section>
     );
 }
 

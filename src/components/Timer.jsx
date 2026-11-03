@@ -28,7 +28,7 @@ function Timer({ timeInSeconds, onFinish, running }) {
         }
     }, [time, onFinish, running]);
     return (
-        <div className="timer">
+        <div className={time <= 5 ? "timer timer-low" : "timer"}>
             <p>Time left: {time} s.</p>
         </div>
     );

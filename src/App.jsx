@@ -11,7 +11,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <nav>
+            <nav className="app-nav">
                 <Link to="/">Home</Link>
                 <Link to="/leaderboard">Leaderboard</Link>
             </nav>

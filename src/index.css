@@ -1,53 +1,72 @@
-/* ---------- Переменные: светлая тема ---------- */
+/* =========================================================
+   Variablen: helles Theme
+   ========================================================= */
 :root {
-    --bg: #f6f5f8;
+    --bg: #f4f3f8;
     --surface: #ffffff;
+    --surface-2: #f8f7fb;
     --text: #4a4553;
+    --text-muted: #7a7584;
     --text-h: #16131c;
-    --border: #e2e0e6;
+    --border: #e2e0e8;
 
     --accent: #6d3bf5;
     --accent-hover: #5a2ad9;
+    --accent-soft: #efe9ff;
     --accent-text: #ffffff;
 
     --correct: #1f8a4c;
     --correct-bg: #e3f6eb;
     --wrong: #c8323b;
     --wrong-bg: #fbe5e6;
+    --warn: #b45309;
+    --warn-bg: #fff4e0;
 
-    --radius: 12px;
-    --shadow: 0 4px 14px rgba(20, 10, 40, 0.08);
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 6px 20px rgba(30, 15, 60, 0.08);
+    --focus: 0 0 0 3px rgba(109, 59, 245, 0.35);
 
-    font: 18px/1.45 system-ui, "Segoe UI", Roboto, sans-serif;
+    font: 17px/1.5 system-ui, "Segoe UI", Roboto, sans-serif;
     color-scheme: light dark;
     color: var(--text);
     background: var(--bg);
     -webkit-font-smoothing: antialiased;
 }
 
-/* ---------- Переменные: тёмная тема (по настройкам системы) ---------- */
+/* =========================================================
+   Variablen: dunkles Theme (nach Systemeinstellung)
+   ========================================================= */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #121118;
-        --surface: #1c1b24;
-        --text: #b4b0be;
+        --bg: #111017;
+        --surface: #1b1a23;
+        --surface-2: #22212c;
+        --text: #b8b4c2;
+        --text-muted: #8a8696;
         --text-h: #f3f2f7;
-        --border: #2e2c38;
+        --border: #2f2d3a;
 
         --accent: #9f7bff;
         --accent-hover: #b497ff;
-        --accent-text: #121118;
+        --accent-soft: #2a2340;
+        --accent-text: #111017;
 
         --correct: #4ccb7f;
         --correct-bg: #15301f;
         --wrong: #ff6b73;
         --wrong-bg: #3a1a1d;
+        --warn: #fbbf24;
+        --warn-bg: #3a2c10;
 
-        --shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+        --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+        --focus: 0 0 0 3px rgba(159, 123, 255, 0.45);
     }
 }
 
-/* ---------- База ---------- */
+/* =========================================================
+   Grundlagen
+   ========================================================= */
 *,
 *::before,
 *::after {
@@ -60,16 +79,18 @@ body {
 }
 
 #root {
-    max-width: 640px;
+    max-width: 680px;
     margin: 0 auto;
-    padding: 16px;
+    padding: 0 16px 48px;
     min-height: 100svh;
 }
 
 h1 {
-    margin: 24px 0;
-    font-size: 2rem;
-    font-weight: 600;
+    margin: 0 0 24px;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     color: var(--text-h);
     text-align: center;
 }
@@ -78,87 +99,162 @@ p {
     margin: 0;
 }
 
-/* ---------- Навигация ---------- */
-nav {
+/* Gemeinsame „Karte“ für die Seiten */
+.home,
+.result,
+.standings,
+.quiz-panel {
+    margin-top: 32px;
+}
+
+.home,
+.result,
+.standings {
+    padding: 28px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.status {
+    margin-top: 48px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+.app-nav {
     display: flex;
-    gap: 16px;
-    padding-bottom: 12px;
+    gap: 4px;
+    padding: 14px 0;
     border-bottom: 1px solid var(--border);
 }
 
-nav a {
-    color: var(--accent);
-    text-decoration: none;
+.app-nav a {
+    padding: 6px 12px;
     font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 8px;
+    transition:
+        background-color 0.15s,
+        color 0.15s;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.app-nav a:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
 }
 
-/* ---------- Форма на главной ---------- */
+.app-nav a:focus-visible {
+    outline: none;
+    box-shadow: var(--focus);
+}
+
+/* =========================================================
+   Formular auf der Startseite
+   ========================================================= */
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .form-group label {
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--text-h);
 }
 
 select {
     width: 100%;
-    padding: 10px 12px;
+    padding: 12px 40px 12px 14px;
     font: inherit;
     color: var(--text-h);
-    background: var(--surface);
+    background-color: var(--surface-2);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    appearance: none;
+    /* Eigener Pfeil statt des Systempfeils */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%237a7584' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    transition: border-color 0.15s;
 }
 
-/* ---------- Кнопки ---------- */
+select:hover {
+    border-color: var(--accent);
+}
+
+select:focus-visible {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: var(--focus);
+}
+
+.home .btn-primary {
+    margin-top: 8px;
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
 .btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     width: 100%;
-    padding: 12px 16px;
+    padding: 14px 18px;
     font: inherit;
     text-align: left;
     color: var(--text-h);
     background: var(--surface);
     border: 2px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition:
         border-color 0.15s,
-        background-color 0.15s;
+        background-color 0.15s,
+        transform 0.1s;
 }
 
-/* Видимая рамка при навигации с клавиатуры */
+.btn:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
 .btn:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: var(--focus);
 }
 
 .btn:disabled {
     cursor: default;
 }
 
-/* Обычная кнопка (вариант ответа) */
+/* Antwortoption */
 .btn-secondary:hover:not(:disabled) {
     border-color: var(--accent);
+    background: var(--accent-soft);
 }
 
 .btn-secondary:disabled {
-    opacity: 0.6;
+    opacity: 0.55;
 }
 
-/* Главная кнопка («Старт», «Дальше») */
+/* Hauptbutton („Start“, „Continue“, „Save“) */
 .btn-primary {
-    text-align: center;
+    justify-content: center;
     font-weight: 600;
     color: var(--accent-text);
     background: var(--accent);
@@ -174,39 +270,115 @@ select {
     opacity: 0.4;
 }
 
-/* Правильный ответ */
+/* Richtige Antwort */
 .btn-correct {
+    font-weight: 600;
     color: var(--correct);
     background: var(--correct-bg);
     border-color: var(--correct);
 }
 
-/* Выбранный неправильный ответ */
+/* Gewählte falsche Antwort */
 .btn-wrong {
+    font-weight: 600;
     color: var(--wrong);
     background: var(--wrong-bg);
     border-color: var(--wrong);
 }
 
-/* ---------- Экран вопроса ---------- */
+/* Symbol, damit richtig/falsch nicht nur an der Farbe erkennbar ist */
+.btn-correct::after,
+.btn-wrong::after {
+    flex-shrink: 0;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.btn-correct::after {
+    content: "✓";
+}
+
+.btn-wrong::after {
+    content: "✗";
+}
+
+/* =========================================================
+   Fragebildschirm
+   ========================================================= */
 .quiz-panel {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 12px;
-    margin-top: 24px;
+    margin-bottom: 6px;
+}
+
+.score,
+.timer {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums; /* Ziffern gleicher Breite, damit der Text nicht springt */
+    border: 2px solid;
+    border-radius: 999px;
+    transition:
+        color 0.2s,
+        background-color 0.2s,
+        border-color 0.2s;
+}
+
+.score {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: transparent;
+}
+
+.timer {
+    color: var(--text-h);
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+/* Noch 5 Sekunden oder weniger */
+.timer-low {
+    color: var(--wrong);
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+/* Keine Animation, wenn sie im System deaktiviert ist */
+@media (prefers-reduced-motion: reduce) {
+    .timer-low {
+        animation: none;
+    }
 }
 
 .question-panel {
-    padding: 20px;
+    padding: 24px;
     margin-bottom: 8px;
     background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
 
 .question {
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
     color: var(--text-h);
 }
 
@@ -214,51 +386,100 @@ select {
     width: 100%;
 }
 
-/* Кнопка «Дальше» отделена от вариантов ответа */
+/* Button „Continue“ von den Antworten abgesetzt */
 .quiz-panel > .btn-primary {
-    margin-top: 12px;
+    margin-top: 14px;
 }
 
-/* ---------- Счёт и таймер ---------- */
-
-/* Необязательная обёртка: ставит счёт и таймер в одну строку */
-.quiz-header {
+/* =========================================================
+   Ergebnis
+   ========================================================= */
+.result {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
 }
 
-.score,
-.timer {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    align-self: flex-start;
-    padding: 6px 14px;
+.final-score {
+    font-size: 1.4rem;
     font-weight: 600;
-    font-variant-numeric: tabular-nums; /* цифры одной ширины, текст не дёргается */
     color: var(--text-h);
+}
+
+/* =========================================================
+   Bestenliste
+   ========================================================= */
+.results-table {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    counter-reset: place;
+}
+
+.result-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+    counter-increment: place;
+}
+
+/* Platznummer */
+.result-row::before {
+    content: counter(place);
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
     background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: 999px;
+    border-radius: 50%;
 }
 
-.score {
-    color: var(--accent);
-    border-color: var(--accent);
+/* Die ersten drei Plätze */
+.result-row:nth-child(1)::before {
+    color: #8a6100;
+    background: #ffe08a;
+}
+.result-row:nth-child(2)::before {
+    color: #4b5563;
+    background: #e5e7eb;
+}
+.result-row:nth-child(3)::before {
+    color: #7c3f12;
+    background: #f3c9a4;
 }
 
-/* Мало времени: добавь этот класс, когда осталось 5 секунд или меньше */
-.timer-low {
-    color: var(--wrong);
-    background: var(--wrong-bg);
-    border-color: var(--wrong);
+.result-date {
+    flex: 1;
+    color: var(--text-muted);
 }
 
-/* ---------- Ошибка ---------- */
+.result-score {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-h);
+}
+
+/* Leere Tabelle */
+.results-table:empty::after {
+    content: "No results yet.";
+    padding: 16px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   Fehler
+   ========================================================= */
 .error-panel {
-    margin-top: 24px;
+    margin-top: 32px;
     padding: 16px 20px;
     color: var(--wrong);
     background: var(--wrong-bg);
@@ -266,13 +487,29 @@ select {
     border-radius: var(--radius);
 }
 
-/* ---------- Маленькие экраны ---------- */
+/* =========================================================
+   Kleine Bildschirme
+   ========================================================= */
 @media (max-width: 480px) {
     :root {
         font-size: 16px;
     }
 
     h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+    }
+
+    .home,
+    .result,
+    .standings {
+        padding: 22px 16px;
+    }
+
+    .question-panel {
+        padding: 18px;
+    }
+
+    .question {
+        font-size: 1.1rem;
     }
 }

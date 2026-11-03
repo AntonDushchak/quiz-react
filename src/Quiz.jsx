@@ -90,7 +90,7 @@ function Quiz({ settings }) {
         return currentScore;
     }
     if (loading) {
-        return <p>Loading...</p>;
+        return <p className="status">Loading...</p>;
     }
 
     const result = checkErrors(error, questionsData.length);
