@@ -20,9 +20,7 @@ export const SORT_OPTIONS = {
     DATE_DESC: "date-desc",
     DATE_ASC: "date-asc",
 };
-export const ALL_TOPICS = "all";
 export const DEFAULT_FILTERS = {
-    thema: ALL_TOPICS,
     minScore: "",
     sortOption: SORT_OPTIONS.SCORE_DESC,
 };

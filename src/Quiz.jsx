@@ -128,9 +128,7 @@ function Quiz({ settings }) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
             const newScore = countScore();
-            navigate("/result", {
-                state: { score: newScore, thema: settings.category, amount: settings.amount },
-            });
+            navigate("/result", { state: { score: newScore } });
         }
     };
 
