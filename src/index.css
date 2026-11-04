@@ -521,9 +521,36 @@ input:is([type="text"], [type="number"], :not([type])):focus-visible {
     background: #f3c9a4;
 }
 
-.result-date {
+/* Name oben, darunter Thema, Anzahl und Datum */
+.result-info {
     flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.result-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 10px;
+    font-size: 0.8rem;
     color: var(--text-muted);
+}
+
+/* Punkt als Trenner zwischen Anzahl und Datum */
+.result-meta span:not(.result-topic) + span::before {
+    content: "·";
+    margin-right: 10px;
+}
+
+.result-topic {
+    padding: 2px 8px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px;
 }
 
 .result-score {
@@ -566,8 +593,11 @@ input:is([type="text"], [type="number"], :not([type])):focus-visible {
 }
 
 .result-name {
+    overflow: hidden;
     font-weight: 600;
     color: var(--text-h);
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /* Leere Tabelle */

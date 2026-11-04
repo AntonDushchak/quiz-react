@@ -1,10 +1,13 @@
-import { SORT_OPTIONS } from "./constants";
+import { SORT_OPTIONS, ALL_TOPICS } from "./constants";
 
 export function filterResults(results, filters) {
     const minScore = Number(filters.minScore);
     const hasMinScore = filters.minScore !== "" && Number.isFinite(minScore);
 
     return results.filter((r) => {
+        if (filters.thema !== ALL_TOPICS && r.thema !== filters.thema) {
+            return false;
+        }
         if (hasMinScore && r.score < minScore) {
             return false;
         }

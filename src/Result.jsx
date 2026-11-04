@@ -6,6 +6,9 @@ import { useState } from "react";
 function Result() {
     const location = useLocation();
     const score = location.state?.score;
+    const thema = location.state?.thema;
+    const amount = location.state?.amount;
+
     const navigate = useNavigate();
     const { addResult } = useStorage();
     const [name, setName] = useState("");
@@ -15,7 +18,7 @@ function Result() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        addResult({ name: name, date: Date.now(), score: score });
+        addResult({ name: name, date: Date.now(), score: score, thema: thema, amount: amount });
         navigate("/leaderboard");
     }
 
