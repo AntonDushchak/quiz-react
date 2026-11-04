@@ -1,40 +1,41 @@
-import Button from "./components/Button";
-import { useNavigate, useLocation, Navigate } from "react-router";
-import useStorage from "./hooks/useStorage";
 import { useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router";
+import Button from "../../components/Button";
+import FormField from "../../components/FormField";
+import { useLeaderboard } from "../leaderboard/useLeaderboard";
 
-function Result() {
-    const location = useLocation();
-    const score = location.state?.score;
+function ResultPage() {
     const navigate = useNavigate();
-    const { addResult } = useStorage();
+    const score = useLocation().state?.score;
+    const { addResult } = useLeaderboard();
     const [name, setName] = useState("");
-    if (score === null || score === undefined) {
+
+    // Opened directly, without finishing a quiz.
+    if (score == null) {
         return <Navigate to="/" />;
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        addResult({ name: name, date: Date.now(), score: score });
+        addResult({ name, date: Date.now(), score });
         navigate("/leaderboard");
-    }
+    };
 
     return (
         <section className="result">
             <p className="final-score">Your final score is {score}</p>
             <p className="subtitle">Would you like to save it to the leaderboard?</p>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="player-name">Your name</label>
+                <FormField id="player-name" label="Your name">
                     <input
                         id="player-name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        maxLength={20}
                         minLength={3}
+                        maxLength={20}
                     />
-                </div>
+                </FormField>
                 <Button variant="primary" type="submit" disabled={!name.trim()}>
                     Save
                 </Button>
@@ -43,4 +44,4 @@ function Result() {
     );
 }
 
-export default Result;
+export default ResultPage;

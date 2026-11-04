@@ -1,7 +1,7 @@
-function ErrorPanel({ error }) {
+function ErrorPanel({ message }) {
     return (
         <div className="error-panel">
-            <p role="alert">{error}</p>
+            <p role="alert">{message}</p>
         </div>
     );
 }

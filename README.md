@@ -20,11 +20,13 @@ npm run dev
 
 Weitere Befehle:
 
-| Befehl            | Beschreibung                    |
-| ----------------- | ------------------------------- |
-| `npm run build`   | Produktions-Build erstellen     |
-| `npm run preview` | Build lokal ansehen             |
-| `npm run lint`    | Code mit ESLint prüfen          |
+| Befehl            | Beschreibung                  |
+| ----------------- | ----------------------------- |
+| `npm run build`   | Produktions-Build erstellen   |
+| `npm run preview` | Build lokal ansehen           |
+| `npm run lint`    | Code mit ESLint prüfen        |
+| `npm test`        | Unit-Tests mit Vitest         |
+| `npm run format`  | Code mit Prettier formatieren |
 
 ## Eigene Fragen hinzufügen
 
@@ -49,15 +51,18 @@ Erlaubte Werte für `difficulty` sind `easy`, `medium` und `hard`.
 
 ## Projektstruktur
 
+Der Code ist nach Features gegliedert. Reine Logik (Punkte, Quiz-Ablauf, Filter) liegt in eigenen Dateien ohne React und ist mit Unit-Tests abgedeckt.
+
 ```
 src/
-├── App.jsx           # Routing
-├── Home.jsx          # Einstellungen
-├── Quiz.jsx          # Quiz-Ablauf und Punkte
-├── Result.jsx        # Ergebnis speichern
-├── Leaderboard.jsx   # Rangliste
-├── results.js        # Filtern und Sortieren
-├── constants.js      # Konfiguration
-├── components/       # UI-Komponenten
-└── hooks/            # useFetch, useStorage
+├── app/                  # Routing und Layout
+├── api/                  # Endpunkte und fetchJson
+├── components/           # Gemeinsame UI-Komponenten
+├── hooks/                # useFetch, useCountdown, useDebouncedValue, useTheme
+├── lib/                  # Hilfsfunktionen (shuffle)
+└── features/
+    ├── settings/         # Startseite mit Einstellungen
+    ├── quiz/             # Fragen laden, Quiz-Ablauf (useReducer), Punkte
+    ├── result/           # Ergebnis speichern
+    └── leaderboard/      # Rangliste, localStorage, Filter und Sortierung
 ```

@@ -27,7 +27,11 @@
     --shadow: 0 6px 20px rgba(30, 15, 60, 0.08);
     --focus: 0 0 0 3px rgba(109, 59, 245, 0.35);
 
-    font: 17px/1.5 system-ui, "Segoe UI", Roboto, sans-serif;
+    font:
+        17px/1.5 system-ui,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
     color-scheme: light dark;
     color: var(--text);
     background: var(--bg);

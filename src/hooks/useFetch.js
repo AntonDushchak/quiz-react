@@ -1,39 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { fetchJson } from "../api/http";
 
 export function useFetch(url) {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [state, setState] = useState({ data: null, loading: true, error: null });
 
     useEffect(() => {
-        let ignore = false;
         const controller = new AbortController();
 
-        fetch(url, { signal: controller.signal })
-            .then((response) => {
-                if (!response.ok) {
-                    const err = new Error(`HTTP ${response.status}`);
-                    err.status = response.status;
-                    throw err;
-                }
-                return response.json();
-            })
+        fetchJson(url, { signal: controller.signal })
             .then((data) => {
-                if (!ignore) setData(data);
+                if (!controller.signal.aborted) {
+                    setState({ data, loading: false, error: null });
+                }
             })
-            .catch((err) => {
-                console.error(err);
-                if (!ignore) setError(err);
-            })
-            .finally(() => {
-                if (!ignore) setLoading(false);
+            .catch((error) => {
+                if (controller.signal.aborted) return;
+                console.error(error);
+                setState({ data: null, loading: false, error });
             });
 
-        return () => {
-            ignore = true;
-            controller.abort();
-        };
+        return () => controller.abort();
     }, [url]);
 
-    return { data, loading, error };
+    return state;
 }
