@@ -92,7 +92,7 @@ function Quiz({ settings }) {
     const navigate = useNavigate();
     const [score, setScore] = useState(0);
     const [streak, setStreak] = useState(0);
-    function getMultiplayer() {
+    function getMultiplier() {
         if (streak === 0) {
             return 1;
         }
@@ -104,8 +104,8 @@ function Quiz({ settings }) {
         let currentScore = score;
         if (answer === questionsData[currentQuestionIndex].correctAnswer) {
             setStreak(streak + 1);
-            const multiplayer = getMultiplayer();
-            currentScore = score + SCORE_PER_QUESTION * multiplayer;
+            const multiplier = getMultiplier();
+            currentScore = score + SCORE_PER_QUESTION * multiplier;
             setScore(currentScore);
         } else {
             setStreak(0);
@@ -171,7 +171,7 @@ function Quiz({ settings }) {
 function pickColor(isFinish, isPicked, isCorrect) {
     if (!isFinish) {
         return "secondary";
-    } else if (isFinish && !isPicked && isCorrect) {
+    } else if (!isPicked && isCorrect) {
         return "correct";
     } else if (isPicked && isCorrect) {
         return "correct";
