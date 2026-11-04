@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import {
     ROOT_API_LINK,
     SCORE_PER_QUESTION,
-    STREAK_MULTIPLAYERS,
+    STREAK_MULTIPLIERS,
     ANSWER_TIME_IN_SECONDS,
 } from "./constants";
 import QuestionPanel from "./components/QuestionPanel";
@@ -22,9 +22,9 @@ function buildApiLink(settings) {
 function prepareQuestions(results) {
     const shuffle = (array) => {
         const arrayCopy = [...array];
-        for (var i = arrayCopy.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = arrayCopy[i];
+        for (let i = arrayCopy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = arrayCopy[i];
             arrayCopy[i] = arrayCopy[j];
             arrayCopy[j] = temp;
         }
@@ -74,8 +74,8 @@ function Quiz({ settings }) {
             return 1;
         }
         const index =
-            streak > STREAK_MULTIPLAYERS.length ? STREAK_MULTIPLAYERS.length - 1 : streak - 1;
-        return STREAK_MULTIPLAYERS[index];
+            streak > STREAK_MULTIPLIERS.length ? STREAK_MULTIPLIERS.length - 1 : streak - 1;
+        return STREAK_MULTIPLIERS[index];
     }
     function countScore() {
         let currentScore = score;

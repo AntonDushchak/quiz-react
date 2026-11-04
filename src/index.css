@@ -202,6 +202,27 @@ select:focus-visible {
     box-shadow: var(--focus);
 }
 
+input:is([type="text"], [type="number"], :not([type])) {
+    width: 100%;
+    padding: 12px 14px;
+    font: inherit;
+    color: var(--text-h);
+    background-color: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.15s;
+}
+
+input:is([type="text"], [type="number"], :not([type])):hover {
+    border-color: var(--accent);
+}
+
+input:is([type="text"], [type="number"], :not([type])):focus-visible {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: var(--focus);
+}
+
 .home .btn-primary {
     margin-top: 8px;
 }
@@ -464,6 +485,44 @@ select:focus-visible {
 .result-score {
     font-weight: 700;
     font-variant-numeric: tabular-nums;
+    color: var(--text-h);
+}
+
+/* Filter der Bestenliste */
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    align-items: end;
+    margin-bottom: 18px;
+}
+
+.filter-grid .form-group {
+    margin-bottom: 0;
+}
+
+/* Gleiche Höhe wie die Eingabefelder */
+.filter-grid .btn {
+    justify-content: center;
+    padding: 11px 14px;
+}
+
+/* Kleiner Button „Delete“ in der Zeile */
+.result-row .btn {
+    width: auto;
+    flex-shrink: 0;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.result-row .btn:hover:not(:disabled) {
+    color: var(--wrong);
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+}
+
+.result-name {
+    font-weight: 600;
     color: var(--text-h);
 }
 

@@ -1,12 +1,16 @@
-import { DIFFICULTY, API_TIMEOUT_DELAY } from "./constants";
+import {
+    DIFFICULTY,
+    API_TIMEOUT_DELAY,
+    QUESTIONS_AMOUNT_OPTIONS,
+    CATEGORY_API_LINK,
+} from "./constants";
 import { useNavigate } from "react-router";
 import { useFetch } from "./hooks/useFetch";
-import { CATEGORY_API_LINK } from "./constants";
 import { useState, useEffect } from "react";
 import Button from "./components/Button";
 import ErrorPanel from "./components/ErrorPanel";
 
-function Home({ setSettings }) {
+function Home({ settings, setSettings }) {
     const navigate = useNavigate();
     const { data, loading, error } = useFetch(CATEGORY_API_LINK);
     const [canContinue, setCanContinue] = useState(false);
@@ -27,6 +31,7 @@ function Home({ setSettings }) {
             <div className="form-group">
                 <label htmlFor="cat-choose">Category</label>
                 <select
+                    value={settings.category}
                     id="cat-choose"
                     onChange={(e) => setSettings((prev) => ({ ...prev, category: e.target.value }))}
                 >
@@ -41,6 +46,7 @@ function Home({ setSettings }) {
             <div className="form-group">
                 <label htmlFor="diff-choose">Difficulty</label>
                 <select
+                    value={settings.difficulty}
                     id="diff-choose"
                     onChange={(e) =>
                         setSettings((prev) => ({ ...prev, difficulty: e.target.value }))
@@ -49,6 +55,20 @@ function Home({ setSettings }) {
                     {DIFFICULTY.map((d) => (
                         <option key={d} value={d.toLowerCase()}>
                             {d}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="form-group">
+                <label htmlFor="amount-choose">Questions amount</label>
+                <select
+                    value={settings.amount}
+                    id="amount-choose"
+                    onChange={(e) => setSettings((prev) => ({ ...prev, amount: e.target.value }))}
+                >
+                    {QUESTIONS_AMOUNT_OPTIONS.map((o) => (
+                        <option key={o} value={o}>
+                            {o}
                         </option>
                     ))}
                 </select>
