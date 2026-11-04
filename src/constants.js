@@ -1,6 +1,7 @@
-export const ANSWER_TIME_IN_SECONDS = 10;
+export const ANSWER_TIME_IN_SECONDS = 20;
 export const ROOT_API_LINK = "https://opentdb.com/api.php";
 export const CATEGORY_API_LINK = "https://opentdb.com/api_category.php";
+export const CUSTOM_QUESTIONS_PATH = "/questions.json";
 export const API_TIMEOUT_DELAY = 5000;
 export const QUESTIONS_AMOUNT_OPTIONS = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 export const DEFAULT_API_VALUES = {

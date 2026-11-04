@@ -4,6 +4,7 @@ import {
     SCORE_PER_QUESTION,
     STREAK_MULTIPLIERS,
     ANSWER_TIME_IN_SECONDS,
+    CUSTOM_QUESTIONS_PATH,
 } from "./constants";
 import QuestionPanel from "./components/QuestionPanel";
 import AnswerLine from "./components/AnswerLine";
@@ -18,18 +19,33 @@ function buildApiLink(settings) {
     const params = new URLSearchParams(settings);
     return `${ROOT_API_LINK}?${params.toString()}`;
 }
+function shuffle(array) {
+    const arrayCopy = [...array];
+    for (let i = arrayCopy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = arrayCopy[i];
+        arrayCopy[i] = arrayCopy[j];
+        arrayCopy[j] = temp;
+    }
+    return arrayCopy;
+}
+
+function prepareCustomQuestions(themen, settings) {
+    const questions = themen
+        .filter((t) => t.id === settings.category)
+        .flatMap((t) => t.questions)
+        .filter((q) => q.difficulty === settings.difficulty);
+
+    return shuffle(questions)
+        .slice(0, Number(settings.amount))
+        .map((q) => ({
+            question: q.question,
+            correctAnswer: q.correctAnswer,
+            answers: shuffle([q.correctAnswer, ...q.incorrectAnswers]),
+        }));
+}
 
 function prepareQuestions(results) {
-    const shuffle = (array) => {
-        const arrayCopy = [...array];
-        for (let i = arrayCopy.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            const temp = arrayCopy[i];
-            arrayCopy[i] = arrayCopy[j];
-            arrayCopy[j] = temp;
-        }
-        return arrayCopy;
-    };
     return results.map((item) => {
         const decodedCorrect = decodeURIComponent(item.correct_answer);
         const decodedIncorrect = item.incorrect_answers.map(decodeURIComponent);
@@ -61,9 +77,16 @@ function checkErrors(error, questionsDataLength) {
 }
 
 function Quiz({ settings }) {
-    const apiLink = buildApiLink(settings);
-    const { data, loading, error } = useFetch(apiLink);
-    const questionsData = useMemo(() => prepareQuestions(data?.results ?? []), [data]);
+    const isCustom = settings.category.startsWith("custom-");
+    const link = isCustom ? CUSTOM_QUESTIONS_PATH : buildApiLink(settings);
+    const { data, loading, error } = useFetch(link);
+    const questionsData = useMemo(
+        () =>
+            isCustom
+                ? prepareCustomQuestions(data ?? [], settings)
+                : prepareQuestions(data?.results ?? []),
+        [data, isCustom, settings],
+    );
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answer, setAnswer] = useState(null);
     const navigate = useNavigate();

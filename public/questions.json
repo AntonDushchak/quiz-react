@@ -1,0 +1,1370 @@
+[
+    {
+        "id": "custom-php",
+        "name": "PHP",
+        "questions": [
+            {
+                "difficulty": "easy",
+                "question": "Which symbol starts a variable name in PHP?",
+                "correctAnswer": "$",
+                "incorrectAnswers": [
+                    "@",
+                    "#",
+                    "&"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which function returns the length of a string?",
+                "correctAnswer": "strlen()",
+                "incorrectAnswers": [
+                    "count()",
+                    "length()",
+                    "size()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which operator concatenates two strings in PHP?",
+                "correctAnswer": ".",
+                "incorrectAnswers": [
+                    "+",
+                    "&",
+                    "~"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which function prints a variable together with its type?",
+                "correctAnswer": "var_dump()",
+                "incorrectAnswers": [
+                    "echo",
+                    "print",
+                    "printf()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What does PHP stand for today?",
+                "correctAnswer": "PHP: Hypertext Preprocessor",
+                "incorrectAnswers": [
+                    "Private Hosting Platform",
+                    "Programmed Hypertext Pages",
+                    "Preprocessed HTML Pages"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which superglobal contains the values from the URL query string?",
+                "correctAnswer": "$_GET",
+                "incorrectAnswers": [
+                    "$_POST",
+                    "$_SERVER",
+                    "$_SESSION"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which function returns the number of elements in an array?",
+                "correctAnswer": "count()",
+                "incorrectAnswers": [
+                    "strlen()",
+                    "length()",
+                    "total()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "How do you start a single-line comment in PHP?",
+                "correctAnswer": "//",
+                "incorrectAnswers": [
+                    "<!--",
+                    "--",
+                    "%%"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which keyword declares a function in PHP?",
+                "correctAnswer": "function",
+                "incorrectAnswers": [
+                    "func",
+                    "def",
+                    "method"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which tag opens a block of PHP code?",
+                "correctAnswer": "<?php",
+                "incorrectAnswers": [
+                    "<php>",
+                    "<script php>",
+                    "<%php"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which function converts a string to uppercase?",
+                "correctAnswer": "strtoupper()",
+                "incorrectAnswers": [
+                    "toUpperCase()",
+                    "upper()",
+                    "ucase()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which superglobal stores session data?",
+                "correctAnswer": "$_SESSION",
+                "incorrectAnswers": [
+                    "$_COOKIE",
+                    "$_GET",
+                    "$_ENV"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which loop is made for iterating over arrays?",
+                "correctAnswer": "foreach",
+                "incorrectAnswers": [
+                    "for...in",
+                    "each",
+                    "loop"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which function joins array elements into a string?",
+                "correctAnswer": "implode()",
+                "incorrectAnswers": [
+                    "explode()",
+                    "concat()",
+                    "str_split()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which operator compares both value and type?",
+                "correctAnswer": "===",
+                "incorrectAnswers": [
+                    "==",
+                    "=",
+                    "<=>"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does explode(',', 'a,b,c') return?",
+                "correctAnswer": "An array with 'a', 'b' and 'c'",
+                "incorrectAnswers": [
+                    "The string 'abc'",
+                    "The number 3",
+                    "The string 'a b c'"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What is the result of '5' + '5' in PHP?",
+                "correctAnswer": "10",
+                "incorrectAnswers": [
+                    "'55'",
+                    "A TypeError",
+                    "'5+5'"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which function checks that a variable exists and is not null?",
+                "correctAnswer": "isset()",
+                "incorrectAnswers": [
+                    "empty()",
+                    "is_null()",
+                    "defined()"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does the ?? operator return?",
+                "correctAnswer": "The left operand if it exists and is not null, otherwise the right one",
+                "incorrectAnswers": [
+                    "Always the right operand",
+                    "true if both operands are null",
+                    "The left operand converted to bool"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which visibility makes a property accessible only inside its own class?",
+                "correctAnswer": "private",
+                "incorrectAnswers": [
+                    "protected",
+                    "public",
+                    "static"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "How do you call a static method of a class?",
+                "correctAnswer": "ClassName::method()",
+                "incorrectAnswers": [
+                    "ClassName->method()",
+                    "ClassName.method()",
+                    "ClassName#method()"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which function is recommended for hashing passwords?",
+                "correctAnswer": "password_hash()",
+                "incorrectAnswers": [
+                    "md5()",
+                    "sha1()",
+                    "base64_encode()"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does array_map() do?",
+                "correctAnswer": "Applies a callback to every element and returns a new array",
+                "incorrectAnswers": [
+                    "Removes elements that fail a test",
+                    "Sorts an array by its keys",
+                    "Merges two arrays into one"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which statement stops the script with a fatal error if the file is missing?",
+                "correctAnswer": "require",
+                "incorrectAnswers": [
+                    "include",
+                    "import",
+                    "use"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does declare(strict_types=1); enable?",
+                "correctAnswer": "Strict scalar type checks for function arguments and return values",
+                "incorrectAnswers": [
+                    "Reporting of all errors and notices",
+                    "Strict HTML validation of the output",
+                    "Disabling of global variables"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which magic method runs when an object is created?",
+                "correctAnswer": "__construct",
+                "incorrectAnswers": [
+                    "__init",
+                    "__create",
+                    "__new"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does echo 10 <=> 5; print?",
+                "correctAnswer": "1",
+                "incorrectAnswers": [
+                    "-1",
+                    "0",
+                    "true"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which interface lets a class define its own foreach iteration step by step?",
+                "correctAnswer": "Iterator",
+                "incorrectAnswers": [
+                    "Countable",
+                    "ArrayAccess",
+                    "Stringable"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which keyword is used to inherit from another class?",
+                "correctAnswer": "extends",
+                "incorrectAnswers": [
+                    "implements",
+                    "inherits",
+                    "uses"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which function returns all keys of an array?",
+                "correctAnswer": "array_keys()",
+                "incorrectAnswers": [
+                    "array_values()",
+                    "keys()",
+                    "array_flip()"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "In return new static(); what does static refer to?",
+                "correctAnswer": "The class that was called at runtime (late static binding)",
+                "incorrectAnswers": [
+                    "The class where the method is written",
+                    "The parent class",
+                    "A static variable of the method"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is the result of 0 == 'a' in PHP 8?",
+                "correctAnswer": "false",
+                "incorrectAnswers": [
+                    "true",
+                    "A TypeError",
+                    "null"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Which PHP 8 feature lets you pass arguments by parameter name?",
+                "correctAnswer": "Named arguments",
+                "incorrectAnswers": [
+                    "Spread arguments",
+                    "Attributes",
+                    "Union types"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "How does a match expression compare values?",
+                "correctAnswer": "Strictly, like ===",
+                "incorrectAnswers": [
+                    "Loosely, like ==",
+                    "With the <=> operator",
+                    "With instanceof"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What happens if no arm of a match expression matches and there is no default?",
+                "correctAnswer": "An UnhandledMatchError is thrown",
+                "incorrectAnswers": [
+                    "It returns null",
+                    "It returns false",
+                    "A warning is shown and the script continues"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Which keyword introduced in PHP 8.1 declares a native enumeration?",
+                "correctAnswer": "enum",
+                "incorrectAnswers": [
+                    "struct",
+                    "typedef",
+                    "set"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does using yield inside a function turn it into?",
+                "correctAnswer": "A generator",
+                "incorrectAnswers": [
+                    "A Fiber",
+                    "A Closure",
+                    "A Promise"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is special about a readonly property?",
+                "correctAnswer": "It can be initialized once and never changed afterwards",
+                "incorrectAnswers": [
+                    "It can only be read by child classes",
+                    "It is automatically public static",
+                    "It cannot be serialized"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does the __invoke magic method allow?",
+                "correctAnswer": "Calling an object like a function",
+                "incorrectAnswers": [
+                    "Converting an object to a string",
+                    "Cloning an object",
+                    "Reading undefined properties"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is the recommended way to prevent SQL injection with PDO?",
+                "correctAnswer": "Prepared statements with bound parameters",
+                "incorrectAnswers": [
+                    "addslashes() on all input",
+                    "htmlspecialchars() on all input",
+                    "strip_tags() on all input"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "How are arrays passed to functions by default?",
+                "correctAnswer": "By value (copy-on-write)",
+                "incorrectAnswers": [
+                    "By reference",
+                    "As a pointer",
+                    "They cannot be passed"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does $a ??= 5; do?",
+                "correctAnswer": "Assigns 5 only if $a is null or not set",
+                "incorrectAnswers": [
+                    "Always assigns 5",
+                    "Compares $a with 5",
+                    "Assigns 5 if $a is any falsy value"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Which PHP 8 feature declares properties directly in constructor parameters?",
+                "correctAnswer": "Constructor property promotion",
+                "incorrectAnswers": [
+                    "Named arguments",
+                    "Attributes",
+                    "Traits"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is a trait?",
+                "correctAnswer": "A way to reuse methods by copying them into classes",
+                "incorrectAnswers": [
+                    "An interface that only holds constants",
+                    "Another name for an abstract class",
+                    "A namespace alias"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is the never return type used for?",
+                "correctAnswer": "Functions that always throw or exit",
+                "incorrectAnswers": [
+                    "Functions that return null",
+                    "Properties that are never set",
+                    "Optional parameters"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "custom-js",
+        "name": "JavaScript",
+        "questions": [
+            {
+                "difficulty": "easy",
+                "question": "Which keyword declares a block-scoped variable that can be reassigned?",
+                "correctAnswer": "let",
+                "incorrectAnswers": [
+                    "const",
+                    "var",
+                    "static"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What does typeof 'hello' return?",
+                "correctAnswer": "'string'",
+                "incorrectAnswers": [
+                    "'text'",
+                    "'char'",
+                    "'object'"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which method adds an element to the end of an array?",
+                "correctAnswer": "push()",
+                "incorrectAnswers": [
+                    "pop()",
+                    "shift()",
+                    "unshift()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which operator checks strict equality?",
+                "correctAnswer": "===",
+                "incorrectAnswers": [
+                    "==",
+                    "=",
+                    "!="
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What is the result of 2 + '2'?",
+                "correctAnswer": "'22'",
+                "incorrectAnswers": [
+                    "4",
+                    "NaN",
+                    "An error"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which method turns a JSON string into an object?",
+                "correctAnswer": "JSON.parse()",
+                "incorrectAnswers": [
+                    "JSON.stringify()",
+                    "JSON.toObject()",
+                    "Object.fromJSON()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which function writes a message to the browser console?",
+                "correctAnswer": "console.log()",
+                "incorrectAnswers": [
+                    "print()",
+                    "echo()",
+                    "document.log()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which property returns the number of elements in an array?",
+                "correctAnswer": "length",
+                "incorrectAnswers": [
+                    "size",
+                    "count",
+                    "total"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What is the value of a declared variable that has not been assigned yet?",
+                "correctAnswer": "undefined",
+                "incorrectAnswers": [
+                    "null",
+                    "NaN",
+                    "0"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "How do you write a single-line comment in JavaScript?",
+                "correctAnswer": "//",
+                "incorrectAnswers": [
+                    "#",
+                    "<!-- -->",
+                    "--"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which method removes the last element of an array?",
+                "correctAnswer": "pop()",
+                "incorrectAnswers": [
+                    "push()",
+                    "slice()",
+                    "unshift()"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which keyword declares a variable that cannot be reassigned?",
+                "correctAnswer": "const",
+                "incorrectAnswers": [
+                    "let",
+                    "final",
+                    "constant"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What does typeof 42 return?",
+                "correctAnswer": "'number'",
+                "incorrectAnswers": [
+                    "'integer'",
+                    "'int'",
+                    "'float'"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which loop always runs its body at least once?",
+                "correctAnswer": "do...while",
+                "incorrectAnswers": [
+                    "while",
+                    "for",
+                    "for...of"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which method returns the first element that matches a CSS selector?",
+                "correctAnswer": "document.querySelector()",
+                "incorrectAnswers": [
+                    "document.querySelectorAll()",
+                    "document.getElementsByClassName()",
+                    "document.findElement()"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does [1, 2, 3].map(x => x * 2) return?",
+                "correctAnswer": "[2, 4, 6]",
+                "incorrectAnswers": [
+                    "[1, 2, 3]",
+                    "12",
+                    "[2]"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does typeof null return?",
+                "correctAnswer": "'object'",
+                "incorrectAnswers": [
+                    "'null'",
+                    "'undefined'",
+                    "'number'"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does Array.prototype.filter() return?",
+                "correctAnswer": "A new array with the elements that pass the test",
+                "incorrectAnswers": [
+                    "The first element that passes the test",
+                    "true or false",
+                    "The index of the first match"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What is a closure?",
+                "correctAnswer": "A function that remembers variables from its outer scope",
+                "incorrectAnswers": [
+                    "A function that closes the browser window",
+                    "An object that cannot be changed",
+                    "A private class"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does 0.1 + 0.2 === 0.3 return?",
+                "correctAnswer": "false",
+                "incorrectAnswers": [
+                    "true",
+                    "NaN",
+                    "An error"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which method waits until all given promises are fulfilled?",
+                "correctAnswer": "Promise.all()",
+                "incorrectAnswers": [
+                    "Promise.race()",
+                    "Promise.any()",
+                    "Promise.resolve()"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does [...arr] create?",
+                "correctAnswer": "A shallow copy of arr",
+                "incorrectAnswers": [
+                    "A deep copy of arr",
+                    "A reversed arr",
+                    "arr without duplicates"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What is the result of '5' * '2'?",
+                "correctAnswer": "10",
+                "incorrectAnswers": [
+                    "'52'",
+                    "'10'",
+                    "NaN"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which keyword pauses an async function until a promise settles?",
+                "correctAnswer": "await",
+                "incorrectAnswers": [
+                    "yield",
+                    "defer",
+                    "pause"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does Boolean('') return?",
+                "correctAnswer": "false",
+                "incorrectAnswers": [
+                    "true",
+                    "''",
+                    "undefined"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does Array.isArray([]) return?",
+                "correctAnswer": "true",
+                "incorrectAnswers": [
+                    "false",
+                    "'array'",
+                    "'object'"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which statement about arrow functions is true?",
+                "correctAnswer": "They do not have their own this",
+                "incorrectAnswers": [
+                    "They are hoisted like function declarations",
+                    "They can be used with new",
+                    "They have their own arguments object"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does Object.freeze(obj) do?",
+                "correctAnswer": "Stops adding, removing and changing its own properties",
+                "incorrectAnswers": [
+                    "Freezes all nested objects as well",
+                    "Hides properties from for...in",
+                    "Returns a copy of the object"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "After const { a } = { a: 1, b: 2 }, what is a?",
+                "correctAnswer": "1",
+                "incorrectAnswers": [
+                    "{ a: 1 }",
+                    "undefined",
+                    "2"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does NaN === NaN return?",
+                "correctAnswer": "false",
+                "incorrectAnswers": [
+                    "true",
+                    "NaN",
+                    "undefined"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "In which order is it logged: log(1); setTimeout(() => log(2)); Promise.resolve().then(() => log(3)); log(4)?",
+                "correctAnswer": "1, 4, 3, 2",
+                "incorrectAnswers": [
+                    "1, 2, 3, 4",
+                    "1, 4, 2, 3",
+                    "1, 3, 4, 2"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is the result of [] + {}?",
+                "correctAnswer": "'[object Object]'",
+                "incorrectAnswers": [
+                    "'{}'",
+                    "0",
+                    "NaN"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is the temporal dead zone?",
+                "correctAnswer": "The time before a let/const declaration when access throws a ReferenceError",
+                "incorrectAnswers": [
+                    "The time a promise stays pending",
+                    "The minimum delay of setTimeout",
+                    "A phase of garbage collection"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "In strict mode, what is this inside a plain function call like fn()?",
+                "correctAnswer": "undefined",
+                "incorrectAnswers": [
+                    "globalThis",
+                    "The function itself",
+                    "null"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does Symbol('a') === Symbol('a') return?",
+                "correctAnswer": "false",
+                "incorrectAnswers": [
+                    "true",
+                    "A TypeError",
+                    "'a'"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does null == undefined return?",
+                "correctAnswer": "true",
+                "incorrectAnswers": [
+                    "false",
+                    "A TypeError",
+                    "null"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is special about the keys of a WeakMap?",
+                "correctAnswer": "They are objects held weakly, so they can be garbage collected",
+                "incorrectAnswers": [
+                    "They can only be strings",
+                    "They can be iterated in insertion order",
+                    "They are copied deeply"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does Array.from({ length: 3 }, (_, i) => i) return?",
+                "correctAnswer": "[0, 1, 2]",
+                "incorrectAnswers": [
+                    "[1, 2, 3]",
+                    "[3]",
+                    "[undefined, undefined, undefined]"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Inside a regular function, what does typeof arguments return?",
+                "correctAnswer": "'object'",
+                "incorrectAnswers": [
+                    "'array'",
+                    "'arguments'",
+                    "'undefined'"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does Object.is(-0, 0) return?",
+                "correctAnswer": "false",
+                "incorrectAnswers": [
+                    "true",
+                    "-0",
+                    "A TypeError"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is a microtask?",
+                "correctAnswer": "A callback, like a promise reaction, that runs before the next macrotask",
+                "incorrectAnswers": [
+                    "A setTimeout callback with 0 ms delay",
+                    "A small Web Worker",
+                    "A CSS animation frame"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does obj?.a.b return if obj is null?",
+                "correctAnswer": "undefined",
+                "incorrectAnswers": [
+                    "null",
+                    "A TypeError",
+                    "false"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does Promise.allSettled() resolve with?",
+                "correctAnswer": "An array with the status and value or reason of every promise",
+                "incorrectAnswers": [
+                    "The value of the first fulfilled promise",
+                    "It rejects on the first rejection",
+                    "Only the fulfilled values"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is logged: let x = 1; { let x = 2; } console.log(x);",
+                "correctAnswer": "1",
+                "incorrectAnswers": [
+                    "2",
+                    "undefined",
+                    "A ReferenceError"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What happens when you call a generator function?",
+                "correctAnswer": "It returns an iterator without running the body yet",
+                "incorrectAnswers": [
+                    "It runs the whole body immediately",
+                    "It returns a Promise",
+                    "It throws if there is no yield"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "custom-react",
+        "name": "React",
+        "questions": [
+            {
+                "difficulty": "easy",
+                "question": "Which hook adds state to a function component?",
+                "correctAnswer": "useState",
+                "incorrectAnswers": [
+                    "useEffect",
+                    "useRef",
+                    "useMemo"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What is the HTML-like syntax used in React components called?",
+                "correctAnswer": "JSX",
+                "incorrectAnswers": [
+                    "JSON",
+                    "XML",
+                    "XAML"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which attribute is used instead of class in JSX?",
+                "correctAnswer": "className",
+                "incorrectAnswers": [
+                    "class",
+                    "cssClass",
+                    "style"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "How does a parent pass data to a child component?",
+                "correctAnswer": "Props",
+                "incorrectAnswers": [
+                    "State",
+                    "Refs",
+                    "Cookies"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which hook runs side effects after rendering?",
+                "correctAnswer": "useEffect",
+                "incorrectAnswers": [
+                    "useState",
+                    "useCallback",
+                    "useId"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "How must a component name start?",
+                "correctAnswer": "With a capital letter",
+                "incorrectAnswers": [
+                    "With a lowercase letter",
+                    "With an underscore",
+                    "With $"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which prop helps React identify items in a list?",
+                "correctAnswer": "key",
+                "incorrectAnswers": [
+                    "id",
+                    "index",
+                    "ref"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "How do you render an app into the page in React 18 and later?",
+                "correctAnswer": "createRoot(element).render(<App />)",
+                "incorrectAnswers": [
+                    "ReactDOM.render(<App />)",
+                    "mount(<App />)",
+                    "React.draw(<App />)"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "How do you attach a click handler in JSX?",
+                "correctAnswer": "onClick={handleClick}",
+                "incorrectAnswers": [
+                    "onclick='handleClick()'",
+                    "click={handleClick}",
+                    "@click={handleClick}"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What does a component return to show UI?",
+                "correctAnswer": "JSX (React elements)",
+                "incorrectAnswers": [
+                    "An HTML string",
+                    "A CSS file",
+                    "A DOM node only"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "Which library is commonly used for page routing in React?",
+                "correctAnswer": "React Router",
+                "incorrectAnswers": [
+                    "Redux",
+                    "Axios",
+                    "Jest"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "How can a component return several elements without a wrapper div?",
+                "correctAnswer": "With a Fragment <>...</>",
+                "incorrectAnswers": [
+                    "It is not possible",
+                    "With a <span> only",
+                    "With a <template> tag"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "How do you write an inline style in JSX?",
+                "correctAnswer": "style={{ color: 'red' }}",
+                "incorrectAnswers": [
+                    "style='color: red'",
+                    "css={{ color: 'red' }}",
+                    "styles='color: red'"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What does {isOpen && <Modal />} do?",
+                "correctAnswer": "Renders Modal only if isOpen is truthy",
+                "incorrectAnswers": [
+                    "Always renders Modal",
+                    "Throws an error",
+                    "Renders Modal twice"
+                ]
+            },
+            {
+                "difficulty": "easy",
+                "question": "What is state in React?",
+                "correctAnswer": "Data inside a component that causes a re-render when it changes",
+                "incorrectAnswers": [
+                    "Read-only data from the parent",
+                    "Global CSS of the app",
+                    "A copy of the server database"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What happens when you call a useState setter?",
+                "correctAnswer": "React schedules a re-render with the new state",
+                "incorrectAnswers": [
+                    "The variable changes immediately in the current render",
+                    "The page reloads",
+                    "Nothing until you call render()"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "When does useEffect with an empty dependency array run?",
+                "correctAnswer": "Once after the component mounts",
+                "incorrectAnswers": [
+                    "After every render",
+                    "Never",
+                    "Before the first render"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What is the function returned from useEffect for?",
+                "correctAnswer": "Cleanup before the effect runs again or the component unmounts",
+                "incorrectAnswers": [
+                    "It is rendered as JSX",
+                    "It catches errors in the effect",
+                    "It memoizes the effect result"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which hook memoizes a computed value?",
+                "correctAnswer": "useMemo",
+                "incorrectAnswers": [
+                    "useRef",
+                    "useEffect",
+                    "useId"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which hook keeps the same function between renders?",
+                "correctAnswer": "useCallback",
+                "incorrectAnswers": [
+                    "useState",
+                    "useReducer",
+                    "useEffect"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does useRef return?",
+                "correctAnswer": "An object with a .current property that persists between renders",
+                "incorrectAnswers": [
+                    "A state value and a setter",
+                    "A Promise",
+                    "A new DOM element"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does 'lifting state up' mean?",
+                "correctAnswer": "Moving shared state to the closest common parent",
+                "incorrectAnswers": [
+                    "Moving state into a global variable",
+                    "Saving state in localStorage",
+                    "Moving state into a child component"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which hook reads a value from a context?",
+                "correctAnswer": "useContext",
+                "incorrectAnswers": [
+                    "useReducer",
+                    "useProvider",
+                    "useState"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What is a controlled input?",
+                "correctAnswer": "An input whose value comes from React state",
+                "incorrectAnswers": [
+                    "An input that is read only via a ref",
+                    "A disabled input",
+                    "An input validated by the browser"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Why should you not change state directly, e.g. with arr.push()?",
+                "correctAnswer": "React compares references and may not re-render",
+                "incorrectAnswers": [
+                    "It throws an error",
+                    "It deletes the state",
+                    "It only works in class components"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does StrictMode do in development?",
+                "correctAnswer": "Runs components and effects twice to find side effects",
+                "incorrectAnswers": [
+                    "Minifies the code",
+                    "Hides all warnings",
+                    "Turns on server-side rendering"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Which hook suits complex state logic with actions?",
+                "correctAnswer": "useReducer",
+                "incorrectAnswers": [
+                    "useState",
+                    "useContext",
+                    "useLayoutEffect"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What happens when a component gets a different key?",
+                "correctAnswer": "React mounts a new instance and its state resets",
+                "incorrectAnswers": [
+                    "It only re-renders",
+                    "React throws an error",
+                    "Nothing, the key is ignored"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "Where are you allowed to call hooks?",
+                "correctAnswer": "Only at the top level of components or custom hooks",
+                "incorrectAnswers": [
+                    "Inside conditions and loops",
+                    "Only in class components",
+                    "Only inside useEffect"
+                ]
+            },
+            {
+                "difficulty": "medium",
+                "question": "What does React.memo do?",
+                "correctAnswer": "Skips re-rendering if the props did not change",
+                "incorrectAnswers": [
+                    "Memoizes a computed value",
+                    "Caches fetch requests",
+                    "Stores state in memory between page loads"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Why does calling setCount(count + 1) twice in one handler add only 1?",
+                "correctAnswer": "Both calls use the same count from the current render",
+                "incorrectAnswers": [
+                    "React always ignores the second call",
+                    "The second call throws an error",
+                    "State can change only once per component"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Which update is safe when the new state depends on the previous one?",
+                "correctAnswer": "setCount(prev => prev + 1)",
+                "incorrectAnswers": [
+                    "setCount(count++)",
+                    "count = count + 1",
+                    "setCount(count + 1)"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "How does useLayoutEffect differ from useEffect?",
+                "correctAnswer": "It runs after DOM changes but before the browser paints",
+                "incorrectAnswers": [
+                    "It runs only on the server",
+                    "It runs before rendering",
+                    "It runs only once"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is reconciliation?",
+                "correctAnswer": "Comparing the new element tree with the old one to update the DOM",
+                "incorrectAnswers": [
+                    "Merging two Redux stores",
+                    "Resolving git conflicts in JSX",
+                    "Re-fetching data after an error"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Why can using the array index as key cause bugs?",
+                "correctAnswer": "After reordering, state can stick to the wrong item",
+                "incorrectAnswers": [
+                    "React throws an error",
+                    "Keys must be strings",
+                    "Lists cannot be longer than 100 items"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "How is an error boundary built?",
+                "correctAnswer": "With a class component using getDerivedStateFromError or componentDidCatch",
+                "incorrectAnswers": [
+                    "With a useError hook",
+                    "With try/catch inside JSX",
+                    "With Promise.catch()"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is useId for?",
+                "correctAnswer": "Stable unique IDs for attributes like htmlFor, same on server and client",
+                "incorrectAnswers": [
+                    "Random keys for list items",
+                    "Database IDs",
+                    "CSS class names"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What is a stale closure in React?",
+                "correctAnswer": "A callback that still sees state or props from an old render",
+                "incorrectAnswers": [
+                    "A component that was never unmounted",
+                    "A cached fetch response",
+                    "A closed context provider"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does Suspense do?",
+                "correctAnswer": "Shows a fallback while its children are not ready yet",
+                "incorrectAnswers": [
+                    "Catches rendering errors",
+                    "Pauses all state updates",
+                    "Stops effects from running"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Which function loads a component only when it is needed (code splitting)?",
+                "correctAnswer": "React.lazy()",
+                "incorrectAnswers": [
+                    "React.split()",
+                    "React.defer()",
+                    "React.later()"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does useTransition let you do?",
+                "correctAnswer": "Mark state updates as non-urgent so the UI stays responsive",
+                "incorrectAnswers": [
+                    "Animate CSS transitions",
+                    "Switch between routes",
+                    "Delay effects by a fixed time"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "In React 19, what can the use API read?",
+                "correctAnswer": "A Promise or a Context",
+                "incorrectAnswers": [
+                    "Only refs",
+                    "localStorage",
+                    "Cookies"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Before React 19, what was needed to pass a ref through a function component?",
+                "correctAnswer": "forwardRef",
+                "incorrectAnswers": [
+                    "useRef",
+                    "createContext",
+                    "React.memo"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "Why does an effect that depends on an object created during render run every time?",
+                "correctAnswer": "The object gets a new reference on every render",
+                "incorrectAnswers": [
+                    "React compares objects deeply and finds changes",
+                    "Effects always run on every render",
+                    "Objects cannot be dependencies"
+                ]
+            },
+            {
+                "difficulty": "hard",
+                "question": "What does flushSync do?",
+                "correctAnswer": "Forces React to apply pending updates synchronously",
+                "incorrectAnswers": [
+                    "Clears localStorage",
+                    "Clears the React cache",
+                    "Unmounts all components"
+                ]
+            }
+        ]
+    }
+]

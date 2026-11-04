@@ -3,6 +3,7 @@ import {
     API_TIMEOUT_DELAY,
     QUESTIONS_AMOUNT_OPTIONS,
     CATEGORY_API_LINK,
+    CUSTOM_QUESTIONS_PATH,
 } from "./constants";
 import { useNavigate } from "react-router";
 import { useFetch } from "./hooks/useFetch";
@@ -13,6 +14,7 @@ import ErrorPanel from "./components/ErrorPanel";
 function Home({ settings, setSettings }) {
     const navigate = useNavigate();
     const { data, loading, error } = useFetch(CATEGORY_API_LINK);
+    const { data: customCategories } = useFetch(CUSTOM_QUESTIONS_PATH);
     const [canContinue, setCanContinue] = useState(false);
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -36,11 +38,22 @@ function Home({ settings, setSettings }) {
                     onChange={(e) => setSettings((prev) => ({ ...prev, category: e.target.value }))}
                 >
                     <option value="">Any Category</option>
-                    {data?.trivia_categories?.map((c) => (
-                        <option key={c.id} value={c.id}>
-                            {c.name}
-                        </option>
-                    ))}
+                    {customCategories && (
+                        <optgroup label="Custom topics">
+                            {customCategories.map((c) => (
+                                <option key={c.id} value={c.id}>
+                                    {c.name}
+                                </option>
+                            ))}
+                        </optgroup>
+                    )}
+                    <optgroup label="Open Trivia DB">
+                        {data?.trivia_categories?.map((c) => (
+                            <option key={c.id} value={c.id}>
+                                {c.name}
+                            </option>
+                        ))}
+                    </optgroup>
                 </select>
             </div>
             <div className="form-group">
