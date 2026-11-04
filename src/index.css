@@ -34,11 +34,17 @@
     -webkit-font-smoothing: antialiased;
 }
 
+/* Helles Theme manuell gewählt */
+:root[data-theme="light"] {
+    color-scheme: light;
+}
+
 /* =========================================================
-   Variablen: dunkles Theme (nach Systemeinstellung)
+   Variablen: dunkles Theme
+   (nach Systemeinstellung, außer hell wurde manuell gewählt)
    ========================================================= */
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         --bg: #111017;
         --surface: #1b1a23;
         --surface-2: #22212c;
@@ -62,6 +68,34 @@
         --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
         --focus: 0 0 0 3px rgba(159, 123, 255, 0.45);
     }
+}
+
+/* Dunkles Theme manuell gewählt */
+:root[data-theme="dark"] {
+    --bg: #111017;
+    --surface: #1b1a23;
+    --surface-2: #22212c;
+    --text: #b8b4c2;
+    --text-muted: #8a8696;
+    --text-h: #f3f2f7;
+    --border: #2f2d3a;
+
+    --accent: #9f7bff;
+    --accent-hover: #b497ff;
+    --accent-soft: #2a2340;
+    --accent-text: #111017;
+
+    --correct: #4ccb7f;
+    --correct-bg: #15301f;
+    --wrong: #ff6b73;
+    --wrong-bg: #3a1a1d;
+    --warn: #fbbf24;
+    --warn-bg: #3a2c10;
+
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    --focus: 0 0 0 3px rgba(159, 123, 255, 0.45);
+
+    color-scheme: dark;
 }
 
 /* =========================================================
@@ -157,6 +191,16 @@ p {
 .app-nav a:focus-visible {
     outline: none;
     box-shadow: var(--focus);
+}
+
+/* Theme-Button rechts in der Navigation */
+.app-nav .btn {
+    width: auto;
+    margin-left: auto;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-width: 1px;
 }
 
 /* =========================================================

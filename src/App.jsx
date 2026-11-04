@@ -5,6 +5,7 @@ import Quiz from "./Quiz";
 import Home from "./Home";
 import Result from "./Result";
 import Leaderboard from "./Leaderboard";
+import ThemeSwitch from "./components/ThemeSwitch";
 
 function App() {
     const [settings, setSettings] = useState(DEFAULT_API_VALUES);
@@ -14,10 +15,11 @@ function App() {
             <nav className="app-nav">
                 <Link to="/">Home</Link>
                 <Link to="/leaderboard">Leaderboard</Link>
+                <ThemeSwitch />
             </nav>
 
             <Routes>
-                <Route path="/" element={<Home setSettings={setSettings} />} />
+                <Route path="/" element={<Home settings={settings} setSettings={setSettings} />} />
                 <Route path="/quiz" element={<Quiz settings={settings} />} />
                 <Route path="/result" element={<Result />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
