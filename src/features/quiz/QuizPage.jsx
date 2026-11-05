@@ -1,179 +1,96 @@
-import { useState, useMemo } from "react";
-import { ROOT_API_LINK, CUSTOM_QUESTIONS_PATH } from "../../api/endpoints";
-import { SCORE_PER_QUESTION, STREAK_MULTIPLIERS, ANSWER_TIME_IN_SECONDS } from "./config";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { ANSWER_TIME_IN_SECONDS } from "./config";
+import { useQuestions } from "./useQuestions";
+import { scoreAnswer } from "./scoring";
 import QuestionPanel from "./components/QuestionPanel";
 import AnswerLine from "./components/AnswerLine";
-import Button from "../../components/Button";
-import { useNavigate } from "react-router";
-import { useFetch } from "../../hooks/useFetch";
-import ErrorPanel from "../../components/ErrorPanel";
 import Score from "./components/Score";
 import Timer from "./components/Timer";
+import Button from "../../components/Button";
+import ErrorPanel from "../../components/ErrorPanel";
 
-function buildApiLink(settings) {
-    const params = new URLSearchParams(settings);
-    return `${ROOT_API_LINK}?${params.toString()}`;
-}
-function shuffle(array) {
-    const arrayCopy = [...array];
-    for (let i = arrayCopy.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = arrayCopy[i];
-        arrayCopy[i] = arrayCopy[j];
-        arrayCopy[j] = temp;
-    }
-    return arrayCopy;
-}
-
-function prepareCustomQuestions(themen, settings) {
-    const questions = themen
-        .filter((t) => t.id === settings.category)
-        .flatMap((t) => t.questions)
-        .filter((q) => q.difficulty === settings.difficulty);
-
-    return shuffle(questions)
-        .slice(0, Number(settings.amount))
-        .map((q) => ({
-            question: q.question,
-            correctAnswer: q.correctAnswer,
-            answers: shuffle([q.correctAnswer, ...q.incorrectAnswers]),
-        }));
-}
-
-function prepareQuestions(results) {
-    return results.map((item) => {
-        const decodedCorrect = decodeURIComponent(item.correct_answer);
-        const decodedIncorrect = item.incorrect_answers.map(decodeURIComponent);
-        return {
-            question: decodeURIComponent(item.question),
-            correctAnswer: decodedCorrect,
-            answers: shuffle([decodedCorrect, ...decodedIncorrect]),
-        };
-    });
-}
-
-function checkErrors(error, questionsDataLength) {
+function getErrorMessage(error, questionsCount) {
     if (error?.status === 429) {
-        return (
-            <ErrorPanel error="Too many requests. Please wait 5 seconds and refresh the page." />
-        );
+        return "Too many requests. Please wait 5 seconds and refresh the page.";
     }
     if (error) {
-        return (
-            <ErrorPanel error="Failed to load questions. Please check your internet connection." />
-        );
+        return "Failed to load questions. Please check your internet connection.";
     }
-    if (questionsDataLength === 0) {
-        return (
-            <ErrorPanel error="There are no questions for this category. Please choose another one." />
-        );
+    if (questionsCount === 0) {
+        return "There are no questions for this category. Please choose another one.";
     }
     return null;
 }
 
-function Quiz({ settings }) {
-    const isCustom = settings.category.startsWith("custom-");
-    const link = isCustom ? CUSTOM_QUESTIONS_PATH : buildApiLink(settings);
-    const { data, loading, error } = useFetch(link);
-    const questionsData = useMemo(
-        () =>
-            isCustom
-                ? prepareCustomQuestions(data ?? [], settings)
-                : prepareQuestions(data?.results ?? []),
-        [data, isCustom, settings],
-    );
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [answer, setAnswer] = useState(null);
+function pickColor(isAnswered, isPicked, isCorrect) {
+    if (!isAnswered) return "secondary";
+    if (isCorrect) return "correct";
+    if (isPicked) return "wrong";
+    return "secondary";
+}
+
+function QuizPage({ settings }) {
     const navigate = useNavigate();
+    const { questions, loading, error } = useQuestions(settings);
+
+    const [index, setIndex] = useState(0);
+    const [answer, setAnswer] = useState(null);
     const [score, setScore] = useState(0);
     const [streak, setStreak] = useState(0);
-    function getMultiplier() {
-        if (streak === 0) {
-            return 1;
-        }
-        const index =
-            streak > STREAK_MULTIPLIERS.length ? STREAK_MULTIPLIERS.length - 1 : streak - 1;
-        return STREAK_MULTIPLIERS[index];
-    }
-    function countScore() {
-        let currentScore = score;
-        if (answer === questionsData[currentQuestionIndex].correctAnswer) {
-            setStreak(streak + 1);
-            const multiplier = getMultiplier();
-            currentScore = score + SCORE_PER_QUESTION * multiplier;
-            setScore(currentScore);
-        } else {
-            setStreak(0);
-        }
-        return currentScore;
-    }
+
     if (loading) {
         return <p className="status">Loading...</p>;
     }
 
-    const result = checkErrors(error, questionsData.length);
-    if (result !== null) {
-        return result;
+    const errorMessage = getErrorMessage(error, questions.length);
+    if (errorMessage) {
+        return <ErrorPanel error={errorMessage} />;
     }
 
-    const onNext = (isLast) => {
-        if (!isLast) {
-            countScore();
-            setAnswer(null);
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-        } else {
-            const newScore = countScore();
-            navigate("/result", { state: { score: newScore } });
+    const question = questions[index];
+    const isAnswered = answer !== null;
+    const isLast = index === questions.length - 1;
+
+    function handleNext() {
+        const next = scoreAnswer({ score, streak }, answer === question.correctAnswer);
+
+        if (isLast) {
+            navigate("/result", { state: { score: next.score } });
+            return;
         }
-    };
+        setScore(next.score);
+        setStreak(next.streak);
+        setAnswer(null);
+        setIndex(index + 1);
+    }
 
     return (
         <section className="quiz-panel">
             <div className="quiz-header">
                 <Score score={score} />
                 <Timer
-                    key={currentQuestionIndex}
+                    key={index}
                     timeInSeconds={ANSWER_TIME_IN_SECONDS}
                     onFinish={() => setAnswer("")}
-                    running={answer === null}
+                    running={!isAnswered}
                 />
             </div>
-            <QuestionPanel text={questionsData[currentQuestionIndex].question} />
-            {questionsData[currentQuestionIndex].answers.map((a) => (
+            <QuestionPanel text={question.question} />
+            {question.answers.map((a) => (
                 <AnswerLine
                     key={a}
                     text={a}
-                    disabled={answer !== null}
+                    disabled={isAnswered}
                     onClick={() => setAnswer(a)}
-                    variant={pickColor(
-                        answer !== null,
-                        a === answer,
-                        a === questionsData[currentQuestionIndex].correctAnswer,
-                    )}
+                    variant={pickColor(isAnswered, a === answer, a === question.correctAnswer)}
                 />
             ))}
-            <Button
-                variant="primary"
-                disabled={answer === null}
-                onClick={() => onNext(currentQuestionIndex === questionsData.length - 1)}
-            >
+            <Button variant="primary" disabled={!isAnswered} onClick={handleNext}>
                 Continue
             </Button>
         </section>
     );
 }
 
-function pickColor(isFinish, isPicked, isCorrect) {
-    if (!isFinish) {
-        return "secondary";
-    } else if (!isPicked && isCorrect) {
-        return "correct";
-    } else if (isPicked && isCorrect) {
-        return "correct";
-    } else if (isPicked && !isCorrect) {
-        return "wrong";
-    } else {
-        return "secondary";
-    }
-}
-export default Quiz;
+export default QuizPage;

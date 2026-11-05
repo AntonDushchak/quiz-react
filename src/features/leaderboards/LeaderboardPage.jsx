@@ -1,8 +1,7 @@
 import { useState } from "react";
 import useStorage from "../../hooks/useStorage";
 import Button from "../../components/Button";
-import { SORT_OPTIONS, DEFAULT_FILTERS } from "../../constants";
-import { applyFilters } from "./results";
+import { SORT_OPTIONS, DEFAULT_FILTERS, applyFilters } from "./results";
 import FormField from "../../components/FormField";
 
 function LeaderboardPage() {
@@ -22,18 +21,18 @@ function LeaderboardPage() {
                         type="number"
                         min={0}
                         value={filters.minScore}
-                        onChange={(e) => handleChange("minScore")(e)}
+                        onChange={handleChange("minScore")}
                     />
                 </FormField>
                 <FormField id="filter-sort" label="Sort by">
                     <select
                         id="filter-sort"
                         value={filters.sortOption}
-                        onChange={(e) => handleChange("sortOption")(e)}
+                        onChange={handleChange("sortOption")}
                     >
-                        {Object.values(SORT_OPTIONS).map((o) => (
-                            <option key={o} value={o}>
-                                {SORT_LABELS[o]}
+                        {SORT_OPTIONS.map((o) => (
+                            <option key={o.value} value={o.value}>
+                                {o.label}
                             </option>
                         ))}
                     </select>
