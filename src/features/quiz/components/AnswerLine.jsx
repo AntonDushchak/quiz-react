@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "../../../components/Button";
 function AnswerLine({ text, ...rest }) {
     return (
         <div className="answer-line">

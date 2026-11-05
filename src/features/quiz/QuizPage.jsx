@@ -1,17 +1,12 @@
 import { useState, useMemo } from "react";
-import {
-    ROOT_API_LINK,
-    SCORE_PER_QUESTION,
-    STREAK_MULTIPLIERS,
-    ANSWER_TIME_IN_SECONDS,
-    CUSTOM_QUESTIONS_PATH,
-} from "./constants";
+import { ROOT_API_LINK, CUSTOM_QUESTIONS_PATH } from "../../api/endpoints";
+import { SCORE_PER_QUESTION, STREAK_MULTIPLIERS, ANSWER_TIME_IN_SECONDS } from "./config";
 import QuestionPanel from "./components/QuestionPanel";
 import AnswerLine from "./components/AnswerLine";
-import Button from "./components/Button";
+import Button from "../../components/Button";
 import { useNavigate } from "react-router";
-import { useFetch } from "./hooks/useFetch";
-import ErrorPanel from "./components/ErrorPanel";
+import { useFetch } from "../../hooks/useFetch";
+import ErrorPanel from "../../components/ErrorPanel";
 import Score from "./components/Score";
 import Timer from "./components/Timer";
 

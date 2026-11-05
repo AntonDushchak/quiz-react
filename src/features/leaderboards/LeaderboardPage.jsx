@@ -1,44 +1,35 @@
 import { useState } from "react";
-import useStorage from "./hooks/useStorage";
-import Button from "./components/Button";
-import { SORT_OPTIONS, DEFAULT_FILTERS } from "./constants";
-import { filterResults, sortResults } from "./results";
+import useStorage from "../../hooks/useStorage";
+import Button from "../../components/Button";
+import { SORT_OPTIONS, DEFAULT_FILTERS } from "../../constants";
+import { applyFilters } from "./results";
+import FormField from "../../components/FormField";
 
-const SORT_LABELS = {
-    [SORT_OPTIONS.SCORE_DESC]: "Score: high to low",
-    [SORT_OPTIONS.SCORE_ASC]: "Score: low to high",
-    [SORT_OPTIONS.DATE_DESC]: "Newest first",
-    [SORT_OPTIONS.DATE_ASC]: "Oldest first",
-};
-
-function Leaderboard() {
+function LeaderboardPage() {
     const { results, removeResult } = useStorage();
     const [filters, setFilters] = useState(DEFAULT_FILTERS);
 
-    const onFilter = (key, value) => setFilters((prev) => ({ ...prev, [key]: value }));
-    const onReset = () => setFilters(DEFAULT_FILTERS);
+    const handleChange = (key) => (e) => setFilters((prev) => ({ ...prev, [key]: e.target.value }));
 
-    const visibleResults = sortResults(filterResults(results, filters), filters.sortOption);
+    const visibleResults = applyFilters(results, filters);
 
     return (
         <section className="standings">
             <div className="filter-grid">
-                <div className="form-group">
-                    <label htmlFor="filter-min-score">Min. score</label>
+                <FormField id="filter-min-score" label="Min. score">
                     <input
                         id="filter-min-score"
                         type="number"
                         min={0}
                         value={filters.minScore}
-                        onChange={(e) => onFilter("minScore", e.target.value)}
+                        onChange={(e) => handleChange("minScore")(e)}
                     />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="filter-sort">Sort by</label>
+                </FormField>
+                <FormField id="filter-sort" label="Sort by">
                     <select
                         id="filter-sort"
                         value={filters.sortOption}
-                        onChange={(e) => onFilter("sortOption", e.target.value)}
+                        onChange={(e) => handleChange("sortOption")(e)}
                     >
                         {Object.values(SORT_OPTIONS).map((o) => (
                             <option key={o} value={o}>
@@ -46,8 +37,9 @@ function Leaderboard() {
                             </option>
                         ))}
                     </select>
-                </div>
-                <Button onClick={onReset}>Reset filters</Button>
+                </FormField>
+
+                <Button onClick={() => setFilters(DEFAULT_FILTERS)}>Reset filters</Button>
             </div>
 
             <div className="results-table">
@@ -64,4 +56,4 @@ function Leaderboard() {
     );
 }
 
-export default Leaderboard;
+export default LeaderboardPage;

@@ -1,27 +1,20 @@
-import {
-    DIFFICULTY,
-    API_TIMEOUT_DELAY,
-    QUESTIONS_AMOUNT_OPTIONS,
-    CATEGORY_API_LINK,
-    CUSTOM_QUESTIONS_PATH,
-} from "./constants";
+import { DIFFICULTY, API_TIMEOUT_DELAY, QUESTIONS_AMOUNT_OPTIONS } from "./config";
+import { CATEGORY_API_LINK, CUSTOM_QUESTIONS_PATH } from "../../api/endpoints";
 import { useNavigate } from "react-router";
-import { useFetch } from "./hooks/useFetch";
-import { useState, useEffect } from "react";
-import Button from "./components/Button";
-import ErrorPanel from "./components/ErrorPanel";
+import { useFetch } from "../../hooks/useFetch";
+import Button from "../../components/Button";
+import ErrorPanel from "../../components/ErrorPanel";
+import FormField from "../../components/FormField";
+import useDebouncedValue from "../../hooks/useDebouncer";
 
-function Home({ settings, setSettings }) {
+function HomePage({ settings, setSettings }) {
     const navigate = useNavigate();
-    const { data, loading, error } = useFetch(CATEGORY_API_LINK);
+    const { data: openTdb, loading, error } = useFetch(CATEGORY_API_LINK);
     const { data: customCategories } = useFetch(CUSTOM_QUESTIONS_PATH);
-    const [canContinue, setCanContinue] = useState(false);
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setCanContinue(!loading);
-        }, API_TIMEOUT_DELAY);
-        return () => clearTimeout(timer);
-    }, [loading]);
+    const canContinue = useDebouncedValue(!loading, API_TIMEOUT_DELAY);
+
+    const handleChange = (key) => (e) =>
+        setSettings((prev) => ({ ...prev, [key]: e.target.value }));
 
     if (error) {
         return <ErrorPanel error="Failed to load categories." />;
@@ -30,12 +23,11 @@ function Home({ settings, setSettings }) {
     return (
         <section className="home">
             <h1>Choose settings</h1>
-            <div className="form-group">
-                <label htmlFor="cat-choose">Category</label>
+            <FormField id="cat-choose" label="Category">
                 <select
                     value={settings.category}
                     id="cat-choose"
-                    onChange={(e) => setSettings((prev) => ({ ...prev, category: e.target.value }))}
+                    onChange={handleChange("category")}
                 >
                     <option value="">Any Category</option>
                     {customCategories && (
@@ -48,22 +40,19 @@ function Home({ settings, setSettings }) {
                         </optgroup>
                     )}
                     <optgroup label="Open Trivia DB">
-                        {data?.trivia_categories?.map((c) => (
+                        {openTdb?.trivia_categories?.map((c) => (
                             <option key={c.id} value={c.id}>
                                 {c.name}
                             </option>
                         ))}
                     </optgroup>
                 </select>
-            </div>
-            <div className="form-group">
-                <label htmlFor="diff-choose">Difficulty</label>
+            </FormField>
+            <FormField id="diff-choose" label="Difficulty">
                 <select
                     value={settings.difficulty}
                     id="diff-choose"
-                    onChange={(e) =>
-                        setSettings((prev) => ({ ...prev, difficulty: e.target.value }))
-                    }
+                    onChange={handleChange("difficulty")}
                 >
                     {DIFFICULTY.map((d) => (
                         <option key={d} value={d.toLowerCase()}>
@@ -71,13 +60,12 @@ function Home({ settings, setSettings }) {
                         </option>
                     ))}
                 </select>
-            </div>
-            <div className="form-group">
-                <label htmlFor="amount-choose">Questions amount</label>
+            </FormField>
+            <FormField id="amount-choose" label="Questions amount">
                 <select
                     value={settings.amount}
                     id="amount-choose"
-                    onChange={(e) => setSettings((prev) => ({ ...prev, amount: e.target.value }))}
+                    onChange={handleChange("amount")}
                 >
                     {QUESTIONS_AMOUNT_OPTIONS.map((o) => (
                         <option key={o} value={o}>
@@ -85,7 +73,7 @@ function Home({ settings, setSettings }) {
                         </option>
                     ))}
                 </select>
-            </div>
+            </FormField>
             <Button variant="primary" onClick={() => navigate("/quiz")} disabled={!canContinue}>
                 Start
             </Button>
@@ -93,4 +81,4 @@ function Home({ settings, setSettings }) {
     );
 }
 
-export default Home;
+export default HomePage;
