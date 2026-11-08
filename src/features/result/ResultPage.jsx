@@ -1,21 +1,21 @@
-import Button from "./components/Button";
+import Button from "../../components/Button";
 import { useNavigate, useLocation, Navigate } from "react-router";
-import useStorage from "./hooks/useStorage";
+import useStorage from "../../hooks/useStorage";
 import { useState } from "react";
 
-function Result() {
-    const location = useLocation();
-    const score = location.state?.score;
+function ResultPage() {
     const navigate = useNavigate();
+    const score = useLocation().state?.score;
     const { addResult } = useStorage();
     const [name, setName] = useState("");
+
     if (score === null || score === undefined) {
         return <Navigate to="/" />;
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        addResult({ name: name, date: Date.now(), score: score });
+        addResult({ name, date: Date.now(), score });
         navigate("/leaderboard");
     }
 
@@ -31,8 +31,8 @@ function Result() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        maxLength={20}
                         minLength={3}
+                        maxLength={20}
                     />
                 </div>
                 <Button variant="primary" type="submit" disabled={!name.trim()}>
@@ -43,4 +43,4 @@ function Result() {
     );
 }
 
-export default Result;
+export default ResultPage;

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router";
-import { DEFAULT_API_VALUES } from "./constants";
-import Quiz from "./Quiz";
-import Home from "./Home";
-import Result from "./Result";
-import Leaderboard from "./Leaderboard";
+import { DEFAULT_API_VALUES } from "./features/settings/config";
+import Quiz from "./features/quiz/QuizPage";
+import Home from "./features/settings/HomePage";
+import Result from "./features/result/ResultPage";
+import Leaderboard from "./features/leaderboards/LeaderboardPage";
 import ThemeSwitch from "./components/ThemeSwitch";
 
 function App() {
